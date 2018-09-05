@@ -1,0 +1,32 @@
+{
+    "compilerOptions": {
+        "target": "ES2015",
+        "typeRoots": [
+            "./node_modules/@types/**/*.d.ts", "./types"
+        ],
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "experimentalDecorators":true,
+        "emitDecoratorMetadata": true,
+        "sourceMap": true,
+        "declaration": false,
+        "outDir": "dist",
+        "baseUrl": ".",
+        "paths": {
+            "*": [
+                "*",
+                "./node_modules/*",
+                "./src/*"
+            ]
+        }
+    },
+    "include": [
+        "src/**/*",
+        "static-files/**/*", "file.indexer.js", "file.watcher.js", "webpack.chunk.index.js"
+    ],
+    "exclude": [
+        "./src/entities/index.ts",
+        "./dist/**/*",
+        "node_modules"
+    ]
+}

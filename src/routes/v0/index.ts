@@ -1,0 +1,1 @@
+export * from 'routes/v0/home/controllers/index';
