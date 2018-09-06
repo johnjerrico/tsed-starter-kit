@@ -23,7 +23,7 @@ config.server.mount.forEach(path => {
 });
 
 // monitor
-gaze(pattern, { cwd: path.resolve(__dirname) }, function () {
+const monitor = gaze(pattern, { cwd: path.resolve(__dirname) }, function () {
     
     engine.index();
 
@@ -33,4 +33,12 @@ gaze(pattern, { cwd: path.resolve(__dirname) }, function () {
     this.on('deleted',async function (event,filepath) {
         await engine.index();
     });
+
+    const endGaze = () => { monitor.close(); }
+    //do something when app is closing
+    process.on('exit', endGaze);
+
+    //catches ctrl+c event
+    process.on('SIGINT', endGaze);
 })
+
