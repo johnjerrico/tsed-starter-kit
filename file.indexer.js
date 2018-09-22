@@ -33,6 +33,7 @@ const reformat = (result,base) => {
     base = `./${base}`;
     let reformatted = [];
     result.forEach(x => {
+      if (x.indexOf("spec") > 0) return;
       if (base !== undefined) {
         reformatted.push(`export * from '${path.relative(base,x.replace('.ts',''))}';`);
       } else {
